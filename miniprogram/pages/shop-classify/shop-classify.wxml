@@ -1,0 +1,92 @@
+<import src="../nav-foot/nav-foot-template.wxml"/>
+<view class="cu-bar search bg-white">
+    <view class="search-form round">
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="输入关键字" confirm-type="search"></input>
+    </view>
+    <view class="action">
+        <button class="cu-btn bg-green shadow-blur round">搜索</button>
+    </view>
+</view>
+<view class="sort-wrap">
+    <view class="sort-item {{selectedSort == 0 ? 'text-green' : ''}}">
+        <picker bindchange="bindSortChange" value="{{index}}" range="{{sort}}">
+            <view class="picker">
+                {{sort[index]}}
+            </view>
+        </picker>
+        <text class="iconfont iconxiajiantou-copy sort-choose"></text>
+    </view>
+    <view class="sort-item {{selectedSort == 1 ? 'text-green' : ''}}" catch:tap="onSalesTap">
+        <text>销量优先</text>
+        <text class="iconfont {{salesIcon ? 'iconxiajiantou-copy' : 'iconshangjiantou'}}"></text>
+    </view>
+    <view class="sort-item {{selectedSort == 2 ? 'text-green' : ''}}" bindtap="showModal" data-target="bottomModal">
+        <text>筛选</text>
+        <text class="iconfont iconhtmal5icon30"></text>
+    </view>
+</view>
+<view class="VerticalMain">
+    <scroll-view class="VerticalNav nav" scroll-y>
+        <view class="cu-item {{id==index?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+            {{list[index]}}
+        </view>
+    </scroll-view>
+    <view class="shop-list">
+        <scroll-view class="cu-list menu-avatar" scroll-y>
+            <block wx:if="{{listState}}">
+                <view class="shop-list-content">
+                    <view class="shop-item" wx:for="{{shopList}}" wx:key
+                            catch:tap="onDetailTap" data-id="{{item.id}}">
+                        <block wx:if="{{item.shopImg == ''}}">
+                            <image src="/images/not-project-img.png" mode="widthFix"></image>
+                        </block>
+                        <block wx:else>
+                            <image src="{{item.shopImg}}" mode="widthFix"></image>
+                        </block>
+                        <view class="shop-info">
+                            <view class="shop-name">{{item.shopName}}</view>
+                            <view class="shop-price">{{'¥' + item.shopPrice}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="not-data">
+                    <image src="/images/not-project.png" mode="widthFix"></image>
+                    <text>暂无数据</text>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <!-- loading -->
+    <view class='cu-load load-modal' wx:if="{{loadModal}}">
+        <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+        <image src='/images/logo.png' class='png' mode='aspectFit'></image>
+        <view class='gray-text'>加载中...</view>
+    </view>
+
+    <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+        <view class="cu-dialog">
+            <form bindsubmit="changeForm">
+                <view class="cu-bar bg-white">
+                    <button form-type="submit" class="action text-green">确定</button>
+                    <!-- <view>确定</view> -->
+                    <view class="action" bindtap="hideModal">取消</view>
+                </view>
+                <view class="padding-xl">
+                    <view class="price-filtrate">
+                        <text>价格</text>
+                        <input type="number" name="bottomPrice" value='{{price}}' />
+                        <text class="partition"></text>
+                        <input type="number" name="peakPrice" value='{{price}}' />
+                    </view>
+                    <view class="text-green reset-btn" catch:tap="onResetTap">
+                        重置
+                    </view>
+                </view>
+            </form>
+        </view>
+    </view>
+    <template is="navFootTemplate"/>
+</view>

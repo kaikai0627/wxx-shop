@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="htmal5icon30" unicode="&#58946;" d="M450.235284-1.17143c-6.412037 0-12.825097 3.206018-16.031115 3.206018-9.618055 6.412037-16.031115 19.237133-16.031115 28.855188l0 278.938943-282.144962 407.185816c-6.412037 9.618055-9.618055 22.443152-3.206018 35.268248 6.41306 9.618055 16.031115 16.031115 28.856211 16.031115l705.361893 0c12.825097 0 22.443152-6.412037 28.855188-16.031115 6.41306-9.618055 3.206018-22.443152-3.206018-32.06223l-282.143938-410.391834 0-214.814484c0-12.825097-6.41306-22.443152-19.237133-28.856211l-128.247896-64.123436C459.854363-1.17143 456.648344-1.17143 450.235284-1.17143z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="jiahao" unicode="&#58918;" d="M98 415.14h829.99v-63.79H98zM481.48 797.85h63.79V-31h-63.79z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="shangjiantou" unicode="&#58896;" d="M65.583 160.791L512 607.21 958.417 160.79z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="jianhao" unicode="&#59166;" d="M902 354H122c-18 0-30 12-30 30s12 30 30 30h780c18 0 30-12 30-30s-12-30-30-30z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="xiajiantou-copy" unicode="&#58897;" d="M958.417 607.2090000000001L512 160.78999999999996 65.583 607.21z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

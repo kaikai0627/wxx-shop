@@ -1,0 +1,40 @@
+<import src="../nav-foot/nav-foot-template.wxml"/>
+<view class="container">
+    <view class="shop-trolley-hd">
+        <image src="/images/bg_red.png"></image>
+        <text class="shop-big-text">购物车({{shopList.length}})</text>
+        <view class="shop-text-ps">共{{shopList.length}}件商品</view>
+        <text class="manage-shop">管理</text>
+    </view>
+    <view class="shop-trolley">
+        <view class="shop-item" wx:for="{{shopList}}" wx:key>
+            <image src="{{item.shopImg}}"></image>
+            <view class="shop-info">
+                <view class="shop-title">{{item.shopName}}</view>
+                <view class="shop-number-price">
+                    <view class="shop-price text-orange">¥ {{item.shopPrice * item.count}}</view>
+                    <view class="shop-number">
+                        <view catchtap='shopMinus' data-id="{{index}}"><text class="iconfont iconjianhao"></text></view>
+                        <input type='number' value='{{item.count}}'
+                                bindinput="changeNumber" 
+                                bindblur="isNumber"
+                                data-id="{{index}}"
+                        />
+                        <view catchtap='shopPlus' data-id="{{index}}"><text class="iconfont iconjiahao"></text></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="shop-clearing">
+        <label>
+            <checkbox class="round" checked="{{false}}"></checkbox>
+            全选
+        </label>
+        <view>
+            合计：<text class="text-orange">¥ {{totalPrice}}</text>
+            <view class="cu-btn round bg-red button-hover">结算</view>
+        </view>
+    </view>
+    <template is="navFootTemplate"/>
+</view>

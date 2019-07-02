@@ -1,0 +1,77 @@
+<view class="container">
+    <form bindsubmit='pushShopTrolley'>
+    <input type='text' name="id" value='{{shopInfo.id}}' hidden />
+    <input type='number' name="count" value='{{count}}' hidden />
+        <swiper catch:tap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
+            <block wx:if="{{shopInfo.shopImg.length == 0}}">
+                <swiper-item>
+                    <image src="/images/not-project-img.png"></image>
+                    <input type='text' name="shopImg" value='/images/not-project-img.png' hidden />
+                </swiper-item>
+            </block>
+            <block wx:else>
+                <swiper-item wx:for="{{shopInfo.shopImg}}" wx:key>
+                    <image src="{{item}}" mode="widthFix"></image>
+                    <input type='text' name="shopImg" value='{{item}}' hidden />
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="info">
+            <view class="shop-name">{{shopInfo.shopName}}</view>
+            <input type='text' name="shopName" value='{{shopInfo.shopName}}' hidden />
+            <view class="shop-price">{{shopInfo.shopPrice}}</view>
+            <input type='text' name="shopPrice" value='{{shopInfo.shopPrice}}' hidden />
+        </view>
+        <view class="promise">
+            <view>正品保障</view>
+            <view>七天无理由退换</view>
+        </view>
+        <view class="cu-bar bg-white solid-bottom">
+            <view class="action">
+                <text class="cuIcon-titles text-orange"></text>推荐商品
+            </view>
+        </view>
+        <view class="bg-white nav text-center">
+            <view class="cu-item {{0==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="0">
+                商品详情
+            </view>
+            <view class="cu-item {{1==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="1">
+                兑换规则
+            </view>
+        </view>
+        <view>
+            <view class="shop-detail" hidden='{{TabCur != 0}}'>
+                <block wx:for="{{shopInfo.shopInfoImg}}" wx:key>
+                    <image src="{{item}}" mode='widthFix'></image>
+                </block>
+            </view>
+            <view class="shop-detail" hidden='{{TabCur != 1}}'>
+                <view class="detail-text">
+                    <view>积分兑换规则：</view>
+                    <view>（1）兑换礼品按当天兑换公告为准。会员可登录积分商城进行兑换。</view>
+                    <view>（2）礼品数量有限，兑完为止。所有兑换礼品均不可退还、退换、退款、退分或兑换成现金。</view>
+                    <view>（3）破损，缺货等非正常原因方可退还积分。</view>
+                    <view>
+                        <text class="text-red">*</text> 会员积分累积方式是每消费1元积1分
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar bg-white tabbar border shop foot">
+            <button class="action" open-type="contact">
+                <view class="cuIcon-service text-green">
+                    <view class="cu-tag badge"></view>
+                </view>
+                客服
+            </button>
+            <view class="action" catchtap='onGoShopTap'>
+                <view class="cuIcon-cart">
+                    <view class="cu-tag badge">{{shopTotal}}</view>
+                </view>
+                购物车
+            </view>
+            <button class="bg-orange submit" form-type='submit'>加入购物车</button>
+            <view class="bg-red submit">立即购买</view>
+        </view>
+    </form>
+</view>

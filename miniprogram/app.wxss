@@ -1,0 +1,53 @@
+@import "./colorui/main.wxss";
+@import "./colorui/icon.wxss";
+@import "./iconfont/iconfont.wxss";
+
+page {
+    box-sizing: border-box;
+    font: 28rpx -apple-system,
+          Helvetica,
+          Arial,
+          Tahoma,
+          PingFang SC,
+          Hiragino Sans GB,
+          Lantinghei SC,
+          Microsoft YaHei,
+          sans-serif;
+    background: #f5f5f5;
+    overflow-x: hidden;
+}
+
+input {
+    font: 28rpx -apple-system,
+          Helvetica,
+          Arial,
+          Tahoma,
+          PingFang SC,
+          Hiragino Sans GB,
+          Lantinghei SC,
+          Microsoft YaHei,
+          sans-serif;
+}
+
+text, view, input, label {
+    box-sizing: border-box;
+}
+
+/* 暂无数据 */
+.not-data {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.not-data text {
+    font-size: 30rpx;
+    color: #999;
+    margin-top: 10rpx;
+}
+
+.not-data image {
+    width: 300rpx;
+}

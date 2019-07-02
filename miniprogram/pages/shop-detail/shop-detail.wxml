@@ -1,0 +1,62 @@
+<view class="container">
+    <swiper catch:tap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
+        <swiper-item wx:for="{{shopInfo.shopImg}}" wx:key>
+            <image src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="info">
+        <view class="shop-name">{{shopInfo.shopName}}</view>
+        <view class="shop-price">{{shopInfo.shopPrice}}</view>
+    </view>
+    <view class="promise">
+        <view>正品保障</view>
+        <view>七天无理由退换</view>
+    </view>
+    <view class="cu-bar bg-white solid-bottom">
+        <view class="action">
+            <text class="cuIcon-titles text-orange"></text>推荐商品
+        </view>
+    </view>
+    <view class="bg-white nav text-center">
+        <view class="cu-item {{0==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="0">
+            商品详情
+        </view>
+        <view class="cu-item {{1==TabCur?'text-green cur':''}}" bindtap="tabSelect" data-id="1">
+            兑换规则
+        </view>
+    </view>
+    <view>
+        <view class="shop-detail" hidden='{{TabCur != 0}}'>
+            <block wx:for="{{shopInfo.shopInfoImg}}" wx:key>
+                <image src="{{item}}" mode='widthFix'></image>
+            </block>
+        </view>
+        <view class="shop-detail" hidden='{{TabCur != 1}}'>
+            <view class="detail-text">
+                <view>积分兑换规则：</view>
+                <view>（1）兑换礼品按当天兑换公告为准。会员可登录积分商城进行兑换。</view>
+                <view>（2）礼品数量有限，兑完为止。所有兑换礼品均不可退还、退换、退款、退分或兑换成现金。</view>
+                <view>（3）破损，缺货等非正常原因方可退还积分。</view>
+                <view>
+                    <text class="text-red">*</text> 会员积分累积方式是每消费1元积1分
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cu-bar bg-white tabbar border shop foot">
+        <button class="action" open-type="contact">
+            <view class="cuIcon-service text-green">
+                <view class="cu-tag badge"></view>
+            </view>
+            客服
+        </button>
+        <view class="action">
+            <view class="cuIcon-cart">
+                <view class="cu-tag badge">99</view>
+            </view>
+            购物车
+        </view>
+        <view class="bg-orange submit">加入购物车</view>
+        <view class="bg-red submit">立即购买</view>
+    </view>
+</view>

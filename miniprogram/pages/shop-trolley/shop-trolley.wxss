@@ -1,0 +1,142 @@
+page {
+    background: #f1f1f1;
+}
+
+.container {
+    padding-bottom: 210rpx;
+}
+
+.shop-trolley-hd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 360rpx;
+    color: #fff;
+    width: 100%;
+    padding: 40rpx 24rpx;
+}
+
+.shop-trolley-hd image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 360rpx;
+}
+
+.shop-big-text {
+    font-size: 40rpx;
+}
+
+.shop-text-ps {
+    font-size: 26rpx;
+    margin-top: 10rpx;
+}
+
+.manage-shop {
+    position: absolute;
+    top: 45rpx;
+    right: 24rpx;
+}
+
+.shop-trolley {
+    margin: 180rpx 24rpx 0;
+    position: relative;
+    z-index: 2;
+}
+
+.shop-item {
+    padding: 20rpx 0;
+    overflow: hidden;
+    display: flex;
+    flex: row;
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 20rpx;
+}
+
+.shop-item image {
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.shop-info {
+    width: 490rpx;
+    padding-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx 0;
+}
+
+.shop-title {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.shop-number-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.shop-number {
+    display: flex;
+    flex-direction: row;
+    width: 200rpx;
+    /* height: 45rpx; */
+}
+
+.shop-number view {
+    border: 1px solid #ececec;
+    flex: 1;
+    position: relative;
+    height: 54rpx;
+}
+
+.shop-number input {
+    flex: 1;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    text-align: center;
+    color: #666;
+    min-height: auto;
+    height: 54rpx;
+}
+
+.shop-number .iconfont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ececec;
+}
+
+.shop-clearing {
+    height: 100rpx;
+    line-height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 100rpx;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 10;
+    padding: 0 24rpx;
+}
+
+.shop-clearing .cu-btn {
+    margin-left: 10rpx;
+}
+
+.shop-clearing checkbox {
+    transform: scale(0.7);
+}
+

@@ -1,0 +1,31 @@
+<import src="../nav-foot/nav-foot-template.wxml"/>
+<view class="container">
+    <swiper catch:tap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
+        <swiper-item wx:for="{{bannerImg}}" wx:key>
+            <image src="{{bannerImg[index]}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="type-list">
+        <view class="type-item" wx:for="{{shopType}}" wx:key
+            catchtap='onShopListTap' data-id="{{item.id}}">
+            <image src="{{item.icon}}"></image>
+            <text>{{item.text}}</text>
+        </view>
+    </view>
+    <view class="cu-bar bg-white solid-bottom margin-top">
+        <view class="action">
+            <text class="cuIcon-titles text-orange"></text>
+            热卖商品
+        </view>
+    </view>
+    <view class="hot-list">
+        <block wx:for="{{hotSale}}" wx:key>
+            <view class="hot-item" catchtap='onShopDetailTap' data-id='{{item.id}}'>
+                <image src="{{item.shopImg}}" mode="widthFix"></image>
+                <text class="shop-name">{{item.shopName}}</text>
+                <text class="shop-price">{{'¥' + item.shopPrice}}</text>
+            </view>
+        </block>
+    </view>
+    <template is="navFootTemplate"/>
+</view>
