@@ -1,6 +1,7 @@
 @import "../nav-foot/nav-foot-template.wxss";
-.container {
-    padding-bottom: 110rpx;
+.tabbar-height {
+    min-height: 110rpx;
+    height: calc(110rpx + env(safe-area-inset-bottom) / 2);
 }
 
 swiper {

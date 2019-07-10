@@ -1,4 +1,4 @@
-// miniprogram/pages/shop-trolley/shop-trolley.js
+const app = getApp();
 Page({
 
     /**
@@ -11,14 +11,15 @@ Page({
         changeManage: '管理',
         checkboxStatus: [],
         allCheckbox: false,
-        deleteList: []
+        deleteList: [],
+        tabbar: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        app.changeTabBar();
     },
 
     /**

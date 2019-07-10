@@ -88,5 +88,5 @@
             </form>
         </view>
     </view>
-    <template is="navFootTemplate"/>
+    <template is="navFootTemplate" data="{{tabbar}}"/>
 </view>

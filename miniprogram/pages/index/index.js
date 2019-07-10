@@ -1,4 +1,5 @@
 const db = wx.cloud.database();
+const app = getApp();
 Page({
 
     /**
@@ -7,19 +8,20 @@ Page({
     data: {
         bannerImg: [],
         shopType: {},
-        hotSale: {}
+        hotSale: {},
+        tabbar: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
+        app.changeTabBar();
         this.getData();
     },
     getData: function() {
         db.collection('index')
             .get().then(res => {
-                console.log(res);
                 this.setData({
                     bannerImg: res.data[0].banner,
                     shopType: res.data[1].shopType,

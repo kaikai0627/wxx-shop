@@ -1,3 +1,4 @@
+const app = getApp();
 var db = wx.cloud.database();
 Page({
     /**
@@ -15,13 +16,15 @@ Page({
         sort: ['默认排序', '价格最低', '价格最高'],
         salesIs: true,
         salesIcon: true,
-        price: null
+        price: null,
+        tabbar: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        app.changeTabBar();
         db.collection('index')
             .get().then(res => {
                 var list = [];
@@ -35,8 +38,9 @@ Page({
             }).catch(err => {
                 console.log(err);
             });
+        var id = options.id || 0;
         this.setData({
-            id: options.id
+            id
         });
         this.getDataShopList();
     },
@@ -176,7 +180,7 @@ Page({
         }
     },
     // 跳转详情页
-    onDetailTap:function(e) {
+    onDetailTap: function(e) {
         console.log(e);
         var id = e.currentTarget.dataset.id;
         wx.navigateTo({
@@ -184,14 +188,14 @@ Page({
         })
     },
     // 分类商品
-    onShopListTap: function (e) {
+    onShopListTap: function(e) {
         var id = e.currentTarget.dataset.id;
         wx.navigateTo({
             url: '../shop-classify/shop-classify?id=' + id,
         })
     },
     // 底部导航栏跳转
-    navChange: function (e) {
+    navChange: function(e) {
         var url = e.currentTarget.dataset.cur;
         wx.navigateTo({
             url: '../' + url + '/' + url

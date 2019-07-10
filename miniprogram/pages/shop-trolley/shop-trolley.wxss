@@ -6,6 +6,11 @@ page {
     padding-bottom: 210rpx;
 }
 
+.tabbar-height {
+    min-height: 210rpx;
+    height:calc(210rpx + env(safe-area-inset-bottom) / 2);
+}
+
 .shop-trolley-hd {
     position: absolute;
     top: 0;
@@ -136,7 +141,7 @@ page {
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
-    bottom: 100rpx;
+    bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);
     left: 0;
     width: 100%;
     background: #fff;

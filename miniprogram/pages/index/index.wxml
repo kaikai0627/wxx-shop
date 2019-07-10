@@ -1,5 +1,5 @@
 <import src="../nav-foot/nav-foot-template.wxml"/>
-<view class="container">
+<view>
     <swiper catch:tap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
         <swiper-item wx:for="{{bannerImg}}" wx:key>
             <image src="{{bannerImg[index]}}"></image>
@@ -27,5 +27,6 @@
             </view>
         </block>
     </view>
-    <template is="navFootTemplate"/>
+    <view class="tabbar-height"></view>
+    <template is="navFootTemplate" data="{{tabbar}}"/>
 </view>

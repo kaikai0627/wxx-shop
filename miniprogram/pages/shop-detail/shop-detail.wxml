@@ -74,4 +74,5 @@
             <view class="bg-red submit">立即购买</view>
         </view>
     </form>
+    <view class="tabbar-height"></view>
 </view>

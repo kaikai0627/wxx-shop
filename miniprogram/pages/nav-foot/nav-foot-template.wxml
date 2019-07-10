@@ -1,28 +1,12 @@
 <template name="navFootTemplate">
-    <view class="cu-bar tabbar bg-white shadow foot">
-        <view class="action" bindtap="navChange" data-cur="index">
-            <view class='cuIcon-cu-image'>
-                <image src="/images/icon/nav_icon_01.png"></image>
-            </view>
-            <view>购物商城</view>
-        </view>
-        <view class="action" catchtap='onShopListTap' data-id="0">
-            <view class='cuIcon-cu-image'>
-                <image src="/images/icon/nav_icon_02.png"></image>
-            </view>
-            <view>分类</view>
-        </view>
-        <view class="action" bindtap="navChange" data-cur="shop-trolley">
-            <view class='cuIcon-cu-image'>
-                <image src="/images/icon/nav_icon_03.png"></image>
-            </view>
-            <view>购物车</view>
-        </view>
-        <view class="action" bindtap="navChange" data-cur="member">
-            <view class='cuIcon-cu-image'>
-                <image src="/images/icon/nav_icon_04.png"></image>
-            </view>
-            <view>会员中心</view>
-        </view>
+    <view class="cu-bar tabbar bg-white shadow foot" style="background-color:{{tabbar.backgroundColor}}; border-top-color:{{tabbar.borderStyle}}; {{tabbar.position == 'top' ? 'top:0' : 'bottom:0'}}">
+        <block wx:for="{{tabbar.list}}" wx:for-item="item" wx:key="index">
+            <navigator class="action" url="{{item.pagePath}}" hover-class="none" open-type="redirect">
+                <view class='cuIcon-cu-image'>
+                    <image src="{{item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+                </view>
+                <view style="color:{{item.selected ? tabbar.selectedColor : tabbar.color}}">{{item.text}}</view>
+            </navigator >
+        </block>
     </view>
 </template>

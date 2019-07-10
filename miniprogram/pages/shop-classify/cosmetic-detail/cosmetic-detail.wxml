@@ -1,4 +1,4 @@
-<view class="container">
+<view>
     <form bindsubmit='pushShopTrolley'>
     <input type='text' name="id" value='{{shopInfo.id}}' hidden />
     <input type='number' name="count" value='{{count}}' hidden />
@@ -74,4 +74,5 @@
             <view class="bg-red submit">立即购买</view>
         </view>
     </form>
+    <view class="tabbar-height"></view>
 </view>
