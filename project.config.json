@@ -41,7 +41,7 @@
 				{
 					"id": 1,
 					"name": "test",
-					"pathName": "pages/shop-trolley/shop-trolley",
+					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				}

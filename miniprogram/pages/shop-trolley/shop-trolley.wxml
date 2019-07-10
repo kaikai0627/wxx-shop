@@ -1,40 +1,64 @@
-<import src="../nav-foot/nav-foot-template.wxml"/>
+<import src="../nav-foot/nav-foot-template.wxml" />
 <view class="container">
     <view class="shop-trolley-hd">
         <image src="/images/bg_red.png"></image>
         <text class="shop-big-text">购物车({{shopList.length}})</text>
         <view class="shop-text-ps">共{{shopList.length}}件商品</view>
-        <text class="manage-shop">管理</text>
+        <block wx:if="{{shopList.length >= 1}}">
+            <text class="manage-shop" catchtap='manageShop'>{{changeManage}}</text>
+        </block>
     </view>
-    <view class="shop-trolley">
-        <view class="shop-item" wx:for="{{shopList}}" wx:key>
-            <image src="{{item.shopImg}}"></image>
-            <view class="shop-info">
-                <view class="shop-title">{{item.shopName}}</view>
-                <view class="shop-number-price">
-                    <view class="shop-price text-orange">¥ {{item.shopPrice * item.count}}</view>
-                    <view class="shop-number">
-                        <view catchtap='shopMinus' data-id="{{index}}"><text class="iconfont iconjianhao"></text></view>
-                        <input type='number' value='{{item.count}}'
-                                bindinput="changeNumber" 
-                                bindblur="isNumber"
-                                data-id="{{index}}"
-                        />
-                        <view catchtap='shopPlus' data-id="{{index}}"><text class="iconfont iconjiahao"></text></view>
+        <view class="shop-trolley">
+            <block wx:if="{{shopList.length >= 1}}">
+                <checkbox-group bindchange="checkboxChange">
+                    <view class="shop-item" wx:for="{{shopList}}" wx:key>
+                        <label class="checkbox-item" catchtap='handleCheckbox' data-id="{{index}}"
+                                data-checked="{{checkboxStatus[index]}}">
+                            <checkbox class="round" value="{{item.id}}"
+                                checked='{{checkboxStatus[index]}}' />
+                        </label>
+                        <image src="{{item.shopImg}}"></image>
+                        <view class="shop-info">
+                            <view class="shop-title">{{item.shopName}}</view>
+                            <view class="shop-number-price">
+                                <view class="shop-price text-orange">¥ {{item.shopPrice * item.count}}</view>
+                                <view class="shop-number">
+                                    <view catchtap='shopMinus' data-id="{{index}}">
+                                        <text class="iconfont iconjianhao"></text>
+                                    </view>
+                                    <input type='number' value='{{item.count}}' bindinput="changeNumber" bindblur="isNumber" data-id="{{index}}" />
+                                    <view catchtap='shopPlus' data-id="{{index}}">
+                                        <text class="iconfont iconjiahao"></text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
                     </view>
-                </view>
+                </checkbox-group>
+            </block>
+            <block wx:else>
+                <view>购物车既然是空的</view>
+            </block>
+        </view>
+        <block wx:if="{{shopList.length >= 1}}">
+            <view class="shop-clearing">
+                <label catchtap='checkedAll'>
+                    <checkbox class="round" checked="{{allCheckbox}}"></checkbox>
+                    全选
+                </label>
+                <block wx:if="{{manageIs}}">
+                    <view>
+                        合计：
+                        <text class="text-orange">¥ {{totalPrice}}</text>
+                        <view class="cu-btn round bg-red button-hover">结算</view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view>
+                        <view class="cu-btn round line-red button-hover" catchtap='deleteShop'>删除</view>
+                    </view>
+                </block>
             </view>
-        </view>
-    </view>
-    <view class="shop-clearing">
-        <label>
-            <checkbox class="round" checked="{{false}}"></checkbox>
-            全选
-        </label>
-        <view>
-            合计：<text class="text-orange">¥ {{totalPrice}}</text>
-            <view class="cu-btn round bg-red button-hover">结算</view>
-        </view>
-    </view>
-    <template is="navFootTemplate"/>
+        </block>
+    <template is="navFootTemplate" />
 </view>

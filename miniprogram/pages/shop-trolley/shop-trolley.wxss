@@ -56,13 +56,26 @@ page {
     margin-bottom: 20rpx;
 }
 
+.checkbox-item {
+    width: 70rpx;
+    position: relative;
+}
+
+.checkbox-item checkbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.8);
+    /* transform: scale(.8); */
+}
+
 .shop-item image {
     width: 180rpx;
     height: 180rpx;
 }
 
 .shop-info {
-    width: 490rpx;
+    width: 410rpx;
     padding-left: 20rpx;
     display: flex;
     flex-direction: column;
@@ -130,6 +143,7 @@ page {
     background: #fff;
     z-index: 10;
     padding: 0 24rpx;
+    border-top: 1px solid #ddd;
 }
 
 .shop-clearing .cu-btn {
@@ -139,4 +153,3 @@ page {
 .shop-clearing checkbox {
     transform: scale(0.7);
 }
-

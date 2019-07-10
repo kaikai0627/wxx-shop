@@ -9,7 +9,7 @@ Page({
         shopInfo: {},
         TabCur: 0,
         arr: [],
-        count: 1,
+        shopId: null,
         shopTotal: 0
     },
 
@@ -33,12 +33,6 @@ Page({
         // （这里的顺序不要动 arr先获取到数据才能获取到arr里的count）
         if (this.data.arr.length != 0) {
             this.shopTotalFun();
-            // 获取此商品加入购物车的数量 
-            var id = this.data.id;
-            var count = this.data.arr[id].count;
-            this.setData({
-                count
-            })
         }
     },
     // 获取购物车的总数量
@@ -83,9 +77,6 @@ Page({
                 if (arr[j].id == param.id) {
                     // 相等的话，给count+1（即再次添加入购物车，数量+1）  
                     arr[j].count = parseInt(arr[j].count) + 1;
-                    this.setData({
-                        count: this.data.count + 1
-                    });
                     // 把购物车数据，存放入缓存
                     try {
                         wx.setStorageSync('cart', arr)
@@ -93,6 +84,11 @@ Page({
                         console.log(e)
                     }
                     this.shopTotalFun();
+                    wx.showToast({
+                        title: '成功加入购物车',
+                        icon: 'none',
+                        duration: 2000
+                    })
                     // +1之后跳出 防止执行push
                     return;
                 }
@@ -111,6 +107,11 @@ Page({
             console.log(e)
         }
         this.shopTotalFun();
+        wx.showToast({
+            title: '成功加入购物车',
+            icon: 'none',
+            duration: 2000
+        })
     },
     // 进入购物车
     onGoShopTap: function () {
