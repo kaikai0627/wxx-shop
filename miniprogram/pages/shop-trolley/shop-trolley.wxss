@@ -76,10 +76,9 @@ page {
 
 .shop-info {
     width: 410rpx;
-    padding-left: 20rpx;
     display: flex;
     flex-direction: column;
-    padding: 20rpx 0;
+    padding: 20rpx 0 20rpx 20rpx;
 }
 
 .shop-title {

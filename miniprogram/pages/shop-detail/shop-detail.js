@@ -8,6 +8,7 @@ Page({
         id: null,
         shopInfo: {},
         TabCur: 0,
+        count: 1,
         arr: [],
         shopId: null,
         shopTotal: 0

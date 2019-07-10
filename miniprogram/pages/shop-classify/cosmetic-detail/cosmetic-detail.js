@@ -9,6 +9,7 @@ Page({
         shopInfo: {},
         TabCur: 0,
         arr: [],
+        count: 1,
         shopId: null,
         shopTotal: 0
     },
@@ -68,6 +69,7 @@ Page({
     pushShopTrolley: function(param) {
         // 获取购物车需要的参数
         var param = param.detail.value;
+        console.log(param);
         // 存放购物车的数组
         var arr = this.data.arr;
         if (arr.length > 0) {

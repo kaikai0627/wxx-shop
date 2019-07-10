@@ -68,3 +68,7 @@ swiper image {
     line-height: 50rpx;
     padding: 10rpx 30rpx;
 }
+
+.shop button {
+    border-radius: 0;
+}
