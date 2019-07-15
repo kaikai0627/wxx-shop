@@ -13,6 +13,7 @@
 	"libVersion": "2.2.5",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -41,7 +42,7 @@
 				{
 					"id": 1,
 					"name": "test",
-					"pathName": "pages/test/test",
+					"pathName": "pages/personage-center/address-list/address-list",
 					"query": "",
 					"scene": null
 				}

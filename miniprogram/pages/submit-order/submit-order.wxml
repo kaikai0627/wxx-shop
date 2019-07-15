@@ -1,0 +1,8 @@
+<view>
+    <view class="shipping-address">
+        <view class="user-info">
+            <text></text>
+        </view>
+        <view class="address"></view>
+    </view>
+</view>

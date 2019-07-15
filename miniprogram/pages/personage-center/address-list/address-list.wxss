@@ -1,0 +1,41 @@
+.address-item {
+    padding: 20rpx 0 20rpx 30rpx;
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+}
+
+.address-content {
+    width: calc(100% - 100rpx);
+    padding-right: 20rpx;
+}
+
+.linkman {
+    font-size: 30rpx;
+}
+
+.linkman text {
+    font-size: 24rpx;
+    color: #939393;
+    margin-left: 10rpx;
+}
+
+.detail-address {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 5rpx;
+}
+
+.edit {
+    color: #939393;
+    width: 100rpx;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #EAEAEA;
+}

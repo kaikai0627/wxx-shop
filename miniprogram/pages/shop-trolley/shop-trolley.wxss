@@ -8,7 +8,7 @@ page {
 
 .tabbar-height {
     min-height: 210rpx;
-    height:calc(210rpx + env(safe-area-inset-bottom) / 2);
+    height: calc(210rpx + env(safe-area-inset-bottom) / 2);
 }
 
 .shop-trolley-hd {
@@ -70,7 +70,7 @@ page {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(.8);
+    transform: translate(-50%, -50%) scale(0.8);
     /* transform: scale(.8); */
 }
 
@@ -141,13 +141,35 @@ page {
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
-    bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);
+    bottom: 100rpx;
     left: 0;
     width: 100%;
     background: #fff;
     z-index: 10;
     padding: 0 24rpx;
     border-top: 1px solid #ddd;
+}
+/** x/xs **/
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .shop-clearing {
+        bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);
+    }
+}
+
+/** xr **/
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    .shop-clearing {
+        bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);
+    }
+}
+
+/** xs max **/
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+    .shop-clearing {
+        bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);
+    }
 }
 
 .shop-clearing .cu-btn {

@@ -1,0 +1,14 @@
+<view>
+    <block wx:for="{{shippingAddress}}" wx:key>
+        <view class="address-item">
+            <view class="address-content">
+                <view class="linkman">
+                    {{item.consignee}}
+                    <text>{{item.phone}}</text>
+                </view>
+                <view class="detail-address">{{item.region[0] + ' ' + item.region[1] + ' ' + item.region[2] + ' ' + item.detailRegion}}</view>
+            </view>
+            <view class="edit pull-right">编辑</view>
+        </view>
+    </block>
+</view>
