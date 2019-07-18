@@ -1,0 +1,11 @@
+.cu-form-group .title {
+    min-width:calc(4em + 30rpx);
+}
+
+.cu-bar.btn-group.margin-top button {
+    max-width: none;
+}
+
+view.cu-form-group picker .picker {
+    text-align: left;
+}

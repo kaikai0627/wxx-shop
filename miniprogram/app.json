@@ -8,7 +8,8 @@
         "pages/member-center/member-center",
         "pages/submit-order/submit-order",
         "pages/personage-center/address-list/add-address/add-address",
-        "pages/personage-center/address-list/address-list"
+        "pages/personage-center/address-list/address-list",
+        "pages/personage-center/address-list/edit-address/edit-address"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

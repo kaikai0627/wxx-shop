@@ -11,7 +11,7 @@ Page({
         changeManage: '管理',
         checkboxStatus: [],
         allCheckbox: false,
-        deleteList: [],
+        chooseShopList: [],
         tabbar: {}
     },
 
@@ -20,6 +20,8 @@ Page({
      */
     onLoad: function(options) {
         app.changeTabBar();
+        this.getShopList();
+        this.checkboxStatus();
     },
 
     /**
@@ -28,7 +30,6 @@ Page({
     onShow: function() {
         this.getShopList();
         this.totalPrice();
-        this.checkboxStatus();
     },
     // 获取storage存储的商品
     getShopList: function() {
@@ -53,9 +54,14 @@ Page({
     // 计算总价
     totalPrice: function() {
         var list = this.data.shopList;
+        var chooseShopList = this.data.chooseShopList;
         var totalPrice = 0;
-        for (var i = 0; i < list.length; i++) {
-            totalPrice += parseFloat(list[i].count) * parseFloat(list[i].shopPrice);
+        for (var j = 0; j < chooseShopList.length; j++) {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id == chooseShopList[j]) {
+                    totalPrice += parseFloat(list[i].count) * parseFloat(list[i].shopPrice);
+                }
+            }
         }
         this.setData({
             totalPrice
@@ -123,18 +129,18 @@ Page({
     // 删除商品
     deleteShop: function() {
         var list = this.data.shopList;
-        var deleteList = this.data.deleteList;
+        var chooseShopList = this.data.chooseShopList;
         var that = this;
         wx.showModal({
-            content: '确认将这' + deleteList.length + '个宝贝删除',
+            content: '确认将这' + chooseShopList.length + '个宝贝删除',
             cancelText: '我再想想',
             confirmText: '删除',
             success(res) {
                 if (res.confirm) {
                     // 确定删除
-                    for (var i = 0; i < deleteList.length; i++) {
+                    for (var i = 0; i < chooseShopList.length; i++) {
                         for (var j = 0; j < list.length; j++) {
-                            if (list[j].id == deleteList[i]) {
+                            if (list[j].id == chooseShopList[i]) {
                                 list.splice(j, 1);
                             }
                         }
@@ -167,50 +173,70 @@ Page({
         for (var i = 0; i < checkboxStatus.length; i++) {
             checkboxStatus[i] = allCheckbox;
         }
-        // 全选时 把所有商品id放入deleteList中 未选中时清空
-        var deleteList = [];
+        // 全选时 把所有商品id放入chooseShopList中 未选中时清空
+        var chooseShopList = [];
         if (checkboxStatus[0]) {
             var shopList = this.data.shopList;
             for (var i = 0; i < shopList.length; i++) {
-                deleteList.push(shopList[i].id);
+                chooseShopList.push(shopList[i].id);
             }
         } else {
-            deleteList = [];
+            chooseShopList = [];
         }
         this.setData({
             checkboxStatus,
             allCheckbox,
-            deleteList
+            chooseShopList
         });
+        this.totalPrice();
     },
     // 单选
     handleCheckbox: function (e) {
         var id = e.currentTarget.dataset.id;
-        console.log(id);
         var checked = e.currentTarget.dataset.checked;
         var checkboxStatus = this.data.checkboxStatus;
         checkboxStatus[id] = !checked;
         this.setData({
             checkboxStatus
         });
-        // 如果商品全部被选中 勾选全选复选框 否则全选复选框的勾选 
+        // 如果商品全部被选中 勾选全选复选框
         for (var i = 0; i < checkboxStatus.length; i++) {
             if (checkboxStatus[i] == false) {
                 this.setData({
                     allCheckbox: false
-                })
+                });
+                this.totalPrice();
                 return
-            } else {
-                this.setData({
-                    allCheckbox: true
-                })
             }
         }
+        // 循环完之后没有发现false 则勾选全选复选框
+        this.setData({
+            allCheckbox: true
+        });
+        this.totalPrice();
     },
     // 选择商品
     checkboxChange: function (e) {
         this.setData({
-            deleteList: e.detail.value
+            chooseShopList: e.detail.value
+        });
+        this.totalPrice();
+    },
+    // 去结算 跳至提交订单页面
+    onBuyTap: function (e) {
+        var list = this.data.shopList;
+        var newList = [];
+        var chooseShopList = this.data.chooseShopList;
+        for (var i = 0; i < chooseShopList.length; i++) {
+            for (var j = 0; j < list.length; j++) {
+                if (list[j].id == chooseShopList[i]) {
+                    newList.push(list[j]);
+                }
+            }
+        }
+        app.onBuyShop(newList);
+        wx.navigateTo({
+            url: '../submit-order/submit-order',
         })
     },
     // 分类商品

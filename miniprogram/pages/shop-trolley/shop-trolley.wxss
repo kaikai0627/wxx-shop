@@ -2,10 +2,6 @@ page {
     background: #f1f1f1;
 }
 
-.container {
-    padding-bottom: 210rpx;
-}
-
 .tabbar-height {
     min-height: 210rpx;
     height: calc(210rpx + env(safe-area-inset-bottom) / 2);

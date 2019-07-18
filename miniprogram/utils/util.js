@@ -6,6 +6,18 @@ function regexConfig() {
     return reg;
 }
 
+function meaningString(params) {
+    var param = params;
+    param = JSON.stringify(param);
+    param = param.replace("{", "");
+    param = param.replace("}", "");
+    param = param.replace(/,/g, "&");
+    param = param.replace(/:/g, "=");
+    param = param.replace(/"/g, "");
+    return param;
+}
+
 module.exports = {
-    regexConfig
+    regexConfig,
+    meaningString
 }

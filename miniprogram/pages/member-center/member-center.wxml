@@ -29,7 +29,7 @@
             </navigator>
         </view>
         <view class="cu-item arrow">
-            <navigator class="content" url="" hover-class="none">
+            <navigator class="content" url="/pages/personage-center/address-list/address-list" hover-class="none">
                 <text class="iconfont iconshouhuodizhi text-green"></text>
                 <text class="text-grey">收货地址</text>
             </navigator>

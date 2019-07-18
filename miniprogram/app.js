@@ -66,6 +66,12 @@ App({
                 traceUser: true,
             })
         }
-        this.globalData = {}
+    },
+    globalData: {
+        submitShop: []
+    },
+    onBuyShop: function (param) {
+        this.globalData.submitShop = param;
+        console.log(this.globalData);
     }
 })

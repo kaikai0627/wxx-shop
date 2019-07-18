@@ -39,3 +39,9 @@
     align-items: center;
     border-left: 1px solid #EAEAEA;
 }
+
+.cu-bar text {
+    display:block;
+    width:100%;
+    text-align: center;
+}

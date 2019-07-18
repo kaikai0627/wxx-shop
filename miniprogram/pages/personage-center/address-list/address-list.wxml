@@ -1,14 +1,23 @@
 <view>
-    <block wx:for="{{shippingAddress}}" wx:key>
-        <view class="address-item">
-            <view class="address-content">
-                <view class="linkman">
-                    {{item.consignee}}
-                    <text>{{item.phone}}</text>
+    <view>
+        <block wx:if="{{shippingAddress.length >= 1}}">
+            <view class="address-item" wx:for="{{shippingAddress}}" wx:key>
+                <view class="address-content" catchtap='chooseAddress' data-param="{{item}}">
+                    <view class="linkman">
+                        {{item.consignee}}
+                        <text>{{item.phone}}</text>
+                    </view>
+                    <view class="detail-address">{{item.region[0] + ' ' + item.region[1] + ' ' + item.region[2] + ' ' + item.detailRegion}}</view>
                 </view>
-                <view class="detail-address">{{item.region[0] + ' ' + item.region[1] + ' ' + item.region[2] + ' ' + item.detailRegion}}</view>
+                <view class="edit pull-right" catchtap="goEditAddress" data-id="{{item._id}}">编辑</view>
             </view>
-            <view class="edit pull-right">编辑</view>
-        </view>
-    </block>
+        </block>
+        <block wx:else>
+            <view>
+                还没有收获地址
+            </view>
+        </block>
+    </view>
+    <view class="cu-tabbar-height"></view>
+    <view class="cu-bar tabbar bg-red submit foot" catchtap='goAddAddress'><text>添加新地址</text></view>
 </view>

@@ -1,0 +1,26 @@
+<form bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top">
+		<view class="title">地址选择</view>
+		<picker mode="region" bindchange="RegionChange" name="region"
+                value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker text-left">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">详细地址</view>
+		<input type="text" name="detailRegion" value='{{detailRegion}}' placeholder="请输入详细地址"></input>
+	</view>
+    <view class="cu-form-group">
+		<view class="title">收货人</view>
+		<input type="text" name="consignee" value='{{consignee}}' placeholder="请输入收货人"></input>
+	</view>
+    <view class="cu-form-group">
+		<view class="title">联系电话</view>
+		<input type="number" name="phone" value='{{phone}}' placeholder="请输入联系电话"></input>
+	</view>
+    <view class="cu-bar btn-group margin-top">
+        <button form-type="submit" class="cu-btn bg-orange shadow-blur round lg">保存</button>
+    </view>
+</form>

@@ -48,7 +48,7 @@
                 <view>
                     合计：
                     <text class="text-orange">¥ {{totalPrice}}</text>
-                    <view class="cu-btn round bg-red button-hover">结算</view>
+                    <view class="cu-btn round bg-red button-hover" catchtap='onBuyTap'>结算</view>
                 </view>
             </block>
             <block wx:else>
