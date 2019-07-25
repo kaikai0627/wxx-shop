@@ -15,7 +15,7 @@
                     <label class="checkbox-item" catchtap='handleCheckbox' data-id="{{index}}" data-checked="{{checkboxStatus[index]}}">
                         <checkbox class="round" value="{{item.id}}" checked='{{checkboxStatus[index]}}' />
                     </label>
-                    <image src="{{item.shopImg}}"></image>
+                    <image src="{{item.shopImg}}" mode="widthFix"></image>
                     <view class="shop-info">
                         <view class="shop-title">{{item.shopName}}</view>
                         <view class="shop-number-price">

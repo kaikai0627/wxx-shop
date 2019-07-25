@@ -28,7 +28,6 @@ Page({
         db.collection('index')
             .get().then(res => {
                 var list = [];
-                console.log(res.data[1].shopType);
                 for (var i = 0; i < Object.keys(res.data[1].shopType).length; i++) {
                     list.push(res.data[1].shopType[i].text);
                 }
@@ -181,7 +180,6 @@ Page({
     },
     // 跳转详情页
     onDetailTap: function(e) {
-        console.log(e);
         var id = e.currentTarget.dataset.id;
         wx.navigateTo({
             url: './cosmetic-detail/cosmetic-detail?id=' + id

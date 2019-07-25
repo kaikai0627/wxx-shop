@@ -1,0 +1,24 @@
+page {
+    background: #fff;
+}
+
+view.cu-list.menu>.cu-item.arrow {
+    padding-right: 50rpx;
+}
+
+view.cu-form-group input {
+    font-size: 28rpx;
+}
+
+picker, input {
+    height: 100rpx;
+}
+
+.head-portrait image {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 50rpx auto;
+    display: block;
+}

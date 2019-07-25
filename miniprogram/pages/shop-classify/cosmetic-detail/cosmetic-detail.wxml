@@ -1,7 +1,7 @@
 <view>
     <form bindsubmit='pushShopTrolley'>
-    <input type='text' name="id" value='{{shopInfo.id}}' hidden />
-    <input type='number' name="count" value='{{count}}' hidden />
+        <input type='text' name="id" value='{{shopInfo.id}}' hidden />
+        <input type='number' name="count" value='{{count}}' hidden />
         <swiper catch:tap="onSwiperTap" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
             <block wx:if="{{shopInfo.shopImg.length == 0}}">
                 <swiper-item>
@@ -71,7 +71,7 @@
                 购物车
             </view>
             <button class="bg-orange submit" form-type='submit'>加入购物车</button>
-            <view class="bg-red submit">立即购买</view>
+            <view class="bg-red submit" catchtap='onBuyTap'>立即购买</view>
         </view>
     </form>
     <view class="tabbar-height"></view>

@@ -21,7 +21,12 @@
         <block wx:for="{{shopList}}" wx:key>
             <view class="shop-info">
                 <view class="shop-img">
-                    <image src="{{item.shopImg}}" mode="widthFix"></image>
+                    <block wx:if="{{item.shopImg != ''}}">
+                        <image src="{{item.shopImg}}" mode="widthFix"></image>
+                    </block>
+                    <block wx:else>
+                        <image src="/images/not-project-img.png" mode="widthFix"></image>
+                    </block>
                 </view>
                 <view class="shop-detail">
                     <view class="unit-price">

@@ -200,7 +200,7 @@ Page({
             checkboxStatus
         });
         // 如果商品全部被选中 勾选全选复选框
-        for (var i = 0; i < checkboxStatus.length; i++) {
+         for (var i = 0; i < checkboxStatus.length; i++) {
             if (checkboxStatus[i] == false) {
                 this.setData({
                     allCheckbox: false
@@ -235,9 +235,18 @@ Page({
             }
         }
         app.onBuyShop(newList);
-        wx.navigateTo({
-            url: '../submit-order/submit-order',
-        })
+        if (newList.length >= 1) {
+            wx.navigateTo({
+                url: '../submit-order/submit-order',
+            })
+        } else {
+            wx.showToast({
+                title: '请选择结算商品',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+        
     },
     // 分类商品
     onShopListTap: function(e) {

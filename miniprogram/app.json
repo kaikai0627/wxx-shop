@@ -9,7 +9,9 @@
         "pages/submit-order/submit-order",
         "pages/personage-center/address-list/add-address/add-address",
         "pages/personage-center/address-list/address-list",
-        "pages/personage-center/address-list/edit-address/edit-address"
+        "pages/personage-center/address-list/edit-address/edit-address",
+        "pages/personage-center/personal-data/personal-data",
+        "pages/personage-center/order-list/order-list"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

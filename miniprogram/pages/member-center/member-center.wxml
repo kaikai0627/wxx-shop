@@ -23,7 +23,7 @@
     </view>
     <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
         <view class="cu-item arrow">
-            <navigator class="content" url="" hover-class="none">
+            <navigator class="content" url="/pages/personage-center/personal-data/personal-data" hover-class="none">
                 <text class="iconfont icongerenziliao text-green"></text>
                 <text class="text-grey">个人资料</text>
             </navigator>

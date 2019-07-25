@@ -1,3 +1,4 @@
+const app = getApp();
 const db = wx.cloud.database();
 Page({
 
@@ -51,7 +52,6 @@ Page({
         db.collection('shopDetail').where({
             id: this.data.id
         }).get().then(res => {
-            console.log(res);
             this.setData({
                 shopInfo: res.data[0]
             })
@@ -118,6 +118,16 @@ Page({
     onGoShopTap: function () {
         wx.navigateTo({
             url: '../shop-trolley/shop-trolley',
+        })
+    },
+    // 立即购买
+    onBuyTap: function () {
+        var shopObj = this.data.shopInfo;
+        var shopArr = [];
+        shopArr.push(shopObj);
+        app.onBuyShop(shopArr);
+        wx.navigateTo({
+            url: '../submit-order/submit-order',
         })
     }
 })

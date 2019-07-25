@@ -1,3 +1,4 @@
+const app = getApp();
 const db = wx.cloud.database();
 Page({
 
@@ -51,7 +52,6 @@ Page({
         db.collection('cosmeticDetail').where({
             id: this.data.id
         }).get().then(res => {
-            console.log(res);
             this.setData({
                 shopInfo: res.data[0]
             })
@@ -69,7 +69,6 @@ Page({
     pushShopTrolley: function(param) {
         // 获取购物车需要的参数
         var param = param.detail.value;
-        console.log(param);
         // 存放购物车的数组
         var arr = this.data.arr;
         if (arr.length > 0) {
@@ -119,6 +118,16 @@ Page({
     onGoShopTap: function () {
         wx.navigateTo({
             url: '../../shop-trolley/shop-trolley',
+        })
+    },
+    // 立即购买
+    onBuyTap: function () {
+        var shopObj = this.data.shopInfo;
+        var shopArr = [];
+        shopArr.push(shopObj);
+        app.onBuyShop(shopArr);
+        wx.navigateTo({
+            url: '../../submit-order/submit-order',
         })
     }
 })

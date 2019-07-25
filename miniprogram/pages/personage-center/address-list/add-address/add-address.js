@@ -28,7 +28,6 @@ Page({
                     && this.verifyConsignee(param.consignee)
                     && this.verifyPhone(param.phone);
         if (flag){
-            console.log(param);
             db.collection('shippingAddress').add({
                 data: {
                     "consignee": param.consignee,

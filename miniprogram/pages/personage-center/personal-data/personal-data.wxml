@@ -1,0 +1,116 @@
+<view class="cu-list menu">
+    <view class="head-portrait">
+        <block wx:if="{{personalData[0].fileID}}">
+            <image src="{{personalData[0].fileID}}" catchtap='upLoad'></image>
+        </block>
+        <block wx:else>
+            <image src="{{avatarUrl}}" catchtap='upLoad'></image>
+        </block>
+    </view>
+    <view class="cu-item arrow cu-form-group margin-top" bindtap="showModal" data-target="DialogModal">
+        <view class="title">姓名</view>
+        <block wx:if="{{personalData[0].nickName}}">
+            <input type="text" value="{{personalData[0].nickName}}" disabled="{{true}}" class="text-right" />
+        </block>
+        <block wx:else>
+            <input type="text" value="{{nickName}}" disabled="{{true}}" class="text-right" />
+        </block>
+    </view>
+    <view class="cu-item cu-form-group">
+        <view class="title">性别</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{sex}}">
+            <view class="picker">
+                <block wx:if="{{personalData[0].sex}}">
+                    {{sex[personalData[0].sex]}}
+                </block>
+                <block wx:else>
+                    {{sex[index]}}
+                </block>
+            </view>
+        </picker>
+    </view>
+    <view class="cu-item cu-form-group">
+        <view class="title">生日</view>
+        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+                <block wx:if="{{personalData[0].date}}">
+                    {{personalData[0].date}}
+                </block>
+                <block wx:else>
+                    {{date}}
+                </block>
+            </view>
+        </picker>
+    </view>
+    <view class="cu-item cu-form-group">
+        <view class="title">地区</view>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="picker">
+                {{region[0]}} {{region[1]}} {{region[2]}}
+            </view>
+        </picker>
+    </view>
+    <view class="cu-item arrow cu-form-group" bindtap="showModal" data-target="phoneModal">
+        <view class="title">手机</view>
+        <block wx:if="{{personalData[0].phone}}">
+            <input type="text" value="{{personalData[0].phone}}" disabled="{{true}}" class="text-right" />
+        </block>
+        <block wx:else>
+            <input type="text" value="{{vPhone}}" disabled="{{true}}" class="text-right" />
+        </block>
+    </view>
+    <!-- 修改用户名模态框 -->
+    <view class="cu-modal {{modalName=='DialogModal'?'show':''}}">
+        <view class="cu-dialog">
+            <form bindsubmit="editUserName">
+                <view class="cu-bar bg-white justify-end">
+                    <view class="content">修改姓名</view>
+                    <view class="action" bindtap="hideModal">
+                        <text class="cuIcon-close text-red"></text>
+                    </view>
+                </view>
+                <view class="padding-xl">
+                    <block wx:if="{{personalData[0].nickName}}">
+                        <input type="text" value="{{personalData[0].nickName}}" name="nickName" />
+                    </block>
+                    <block wx:else>
+                        <input type="text" value="{{nickName}}" name="nickName" />
+                    </block>
+                </view>
+                <view class="cu-bar bg-white justify-end">
+                    <view class="action">
+                        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+                        <button class="cu-btn bg-green margin-left" form-type="submit">确定</button>
+                    </view>
+                </view>
+            </form>
+        </view>
+    </view>
+    <!-- 修改手机号模态框 -->
+    <view class="cu-modal {{modalName=='phoneModal'?'show':''}}">
+        <view class="cu-dialog">
+            <form bindsubmit="editPhone">
+                <view class="cu-bar bg-white justify-end">
+                    <view class="content">修改手机号</view>
+                    <view class="action" bindtap="hideModal">
+                        <text class="cuIcon-close text-red"></text>
+                    </view>
+                </view>
+                <view class="padding-xl">
+                    <block wx:if="{{personalData[0].phone}}">
+                        <input type="text" value="{{personalData[0].phone}}" name="phone" />
+                    </block>
+                    <block wx:else>
+                        <input type="text" value="" name="phone" />
+                    </block>
+                </view>
+                <view class="cu-bar bg-white justify-end">
+                    <view class="action">
+                        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+                        <button class="cu-btn bg-green margin-left" form-type="submit">确定</button>
+                    </view>
+                </view>
+            </form>
+        </view>
+    </view>
+</view>

@@ -13,7 +13,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options);
         if (options.chooseIs) {
             this.setData({
                 chooseIs: options.chooseIs
@@ -54,7 +53,6 @@ Page({
     chooseAddress: function(e) {
         if (this.data.chooseIs) {
             var param = e.currentTarget.dataset.param;
-            console.log(param);
             wx.navigateTo({
                 url: '../../submit-order/submit-order?consignee=' + param.consignee 
                     + '&phone=' + param.phone
