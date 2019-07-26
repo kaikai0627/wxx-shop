@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/welcome/welcome",
         "pages/index/index",
         "pages/shop-detail/shop-detail",
         "pages/shop-classify/shop-classify",

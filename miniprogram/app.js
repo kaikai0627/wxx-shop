@@ -1,4 +1,4 @@
-//app.js
+const util = require("./utils/util.js");
 App({
     tabbar: {
         color: "#242424",
@@ -60,9 +60,7 @@ App({
     },
     // 全局数据
     globalData: {
-        submitShop: [],
-        nickName: '',
-        avatarUrl: ''
+        submitShop: []
     },
     onLaunch: function() {
         if (!wx.cloud) {
@@ -72,31 +70,47 @@ App({
                 traceUser: true,
             })
         }
-        // 获取用户信息
-        wx.getSetting({
-            success: res => {
-                if (res.authSetting['scope.userInfo']) {
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                    wx.getUserInfo({
-                        success: res => {
-                            // 可以将 res 发送给后台解码出 unionId
-                            this.globalData.nickName = res.userInfo.nickName;
-                            this.globalData.avatarUrl = res.userInfo.avatarUrl;
-                            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                            // 所以此处加入 callback 以防止这种情况
-                            if (this.userInfoReadyCallback) {
-                                this.userInfoReadyCallback(res)
-                            }
-                        }
-                    })
-                }
-            }
-        })
     },
-
+    // 获取用户信息
+    onGotUserInfo: function (res) {
+        const db = wx.cloud.database();
+        wx.redirectTo({
+            url: '/pages/index/index',
+        });
+        if (res.detail.userInfo) {
+            // 可以将 res 发送给后台解码出 unionId
+            const nickName = res.userInfo.nickName;
+            const avatarUrl = res.userInfo.avatarUrl;
+            // 登录获取openid 查询云数据库
+            wx.cloud.callFunction({
+                name: 'login'
+            }).then(res => {
+                db.collection('personalData').where({
+                    _openId: res.result.openId
+                }).get().then(res => {
+                    // 如果不是第一次进入 则返回 否则将头像用户名 添加到云数据库
+                    if (res.data.length >= 1) {
+                        return;
+                    } else {
+                        db.collection('personalData').add({
+                            data: {
+                                nickName: nickName,
+                                fileID: avatarUrl
+                            }
+                        });
+                    }
+                });
+            });
+        } else {
+            wx.showToast({
+                title: '授权失败',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+    },
     // 提交的商品
-    onBuyShop: function (param) {
+    onBuyShop: function(param) {
         this.globalData.submitShop = param;
-        console.log(this.globalData)
     },
 })

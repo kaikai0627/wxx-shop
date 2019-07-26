@@ -6,7 +6,9 @@ Page({
      */
     data: {
         shippingAddress: [],
-        chooseIs: false
+        loadModal: false,
+        chooseIs: false,
+        notText: ''
     },
 
     /**
@@ -18,6 +20,12 @@ Page({
                 chooseIs: options.chooseIs
             }) 
         }
+        // 显示loading
+        this.setData({
+            loadModal: true
+        });
+    },
+    onShow: function () {
         this.getAddressData();
     },
     // 获取收货地址
@@ -30,10 +38,19 @@ Page({
             }).get().then(res => {
                 this.setData({
                     shippingAddress: res.data
-                })
+                });
             }).catch(err => {
                 console.log(err);
-            })
+                this.setData({
+                    notText: '还没有收获地址'
+                });
+            });
+            setTimeout(() => {
+                // 数据加载完 关闭loading
+                this.setData({
+                    loadModal: false
+                });
+            }, 300);
         })
     },
     // 跳至编辑页面

@@ -40,7 +40,12 @@ Page({
                         title: '添加成功',
                         icon: 'success',
                         duration: 2000
-                    })
+                    });
+                    setTimeout(() => {
+                        wx.navigateBack({
+                            delta: 1,
+                        });
+                    },2000);
                 },
                 fail: err => {
                     console.log(err);

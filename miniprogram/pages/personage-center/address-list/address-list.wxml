@@ -14,9 +14,15 @@
         </block>
         <block wx:else>
             <view>
-                还没有收获地址
+                {{notText}}
             </view>
         </block>
+    </view>
+    <!-- loading -->
+    <view class='cu-load load-modal' wx:if="{{loadModal}}">
+        <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+        <image src='/images/logo.png' class='png' mode='aspectFit'></image>
+        <view class='gray-text'>加载中...</view>
     </view>
     <view class="cu-tabbar-height"></view>
     <view class="cu-bar tabbar bg-red submit foot" catchtap='goAddAddress'><text>添加新地址</text></view>

@@ -1,20 +1,10 @@
 <view class="cu-list menu">
     <view class="head-portrait">
-        <block wx:if="{{personalData[0].fileID}}">
-            <image src="{{personalData[0].fileID}}" catchtap='upLoad'></image>
-        </block>
-        <block wx:else>
-            <image src="{{avatarUrl}}" catchtap='upLoad'></image>
-        </block>
+        <image src="{{personalData[0].fileID}}" catchtap='upLoad'></image>
     </view>
     <view class="cu-item arrow cu-form-group margin-top" bindtap="showModal" data-target="DialogModal">
         <view class="title">姓名</view>
-        <block wx:if="{{personalData[0].nickName}}">
-            <input type="text" value="{{personalData[0].nickName}}" disabled="{{true}}" class="text-right" />
-        </block>
-        <block wx:else>
-            <input type="text" value="{{nickName}}" disabled="{{true}}" class="text-right" />
-        </block>
+        <input type="text" value="{{personalData[0].nickName}}" disabled="{{true}}" class="text-right" />
     </view>
     <view class="cu-item cu-form-group">
         <view class="title">性别</view>
@@ -70,12 +60,7 @@
                     </view>
                 </view>
                 <view class="padding-xl">
-                    <block wx:if="{{personalData[0].nickName}}">
-                        <input type="text" value="{{personalData[0].nickName}}" name="nickName" />
-                    </block>
-                    <block wx:else>
-                        <input type="text" value="{{nickName}}" name="nickName" />
-                    </block>
+                    <input type="text" value="{{personalData[0].nickName}}" name="nickName" />
                 </view>
                 <view class="cu-bar bg-white justify-end">
                     <view class="action">

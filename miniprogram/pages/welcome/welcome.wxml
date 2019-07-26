@@ -1,0 +1,4 @@
+<view class="welcome">
+    <button hidden='{{status}}' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="cu-btn round bg-grey">授权进入</button>
+    <image src="../../images/welcome.png"></image>
+</view>

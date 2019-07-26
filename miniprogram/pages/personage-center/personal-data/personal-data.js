@@ -1,5 +1,6 @@
+const util = require("../../../utils/util.js");
 const db = wx.cloud.database();
-var app = getApp();
+const app = getApp();
 Page({
     /**
      * 页面的初始数据
@@ -8,8 +9,6 @@ Page({
         sex: ['保密', '男', '女'],
         index: 0,
         personalData: [],
-        nickName: '',
-        avatarUrl: '',
         modalName: null,
         date: 'yyyy-mm-dd',
         region: ['省', '市', '区'],
@@ -20,10 +19,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.setData({
-            nickName: app.globalData.nickName,
-            avatarUrl: app.globalData.avatarUrl
-        });
         this.getpersonalData();
         this.getFile();
     },
@@ -58,7 +53,7 @@ Page({
     editUserName: function(param) {
         // 获取新编辑的用户名
         var nickName = param.detail.value.nickName;
-        this.commonEditText('nickName', nickName);
+        util.commonEditText('nickName', nickName);
         // 修改data中的用户名 同步到视图
         var nickNameData = "personalData[0].nickName";
         this.setData({
@@ -70,7 +65,7 @@ Page({
     },
     // 性别选择
     bindPickerChange: function(e) {
-        this.commonEditText('sex', e.detail.value);
+        util.commonEditText('sex', e.detail.value);
         // 修改data中的用户名 同步到视图
         var sex = "personalData[0].sex";
         this.setData({
@@ -80,7 +75,7 @@ Page({
     },
     // 生日选择
     bindDateChange: function (e) {
-        this.commonEditText('date', e.detail.value);
+        util.commonEditText('date', e.detail.value);
         // 修改data中的用户名 同步到视图
         var date = "personalData[0].date";
         this.setData({
@@ -90,7 +85,7 @@ Page({
     },
     // 地区选择
     bindRegionChange: function (e) {
-        this.commonEditText('region', e.detail.value);
+        util.commonEditText('region', e.detail.value);
         // 修改data中的用户名 同步到视图
         var region = "personalData[0].region";
         this.setData({
@@ -102,7 +97,7 @@ Page({
     editPhone: function (param) {
         // 获取新编辑的手机号
         var phone = param.detail.value.phone;
-        this.commonEditText('phone', phone);
+        util.commonEditText('phone', phone);
         // 修改data中的手机号 同步到视图
         var phoneData = "personalData[0].phone";
         this.setData({
@@ -157,7 +152,6 @@ Page({
             db.collection('personalData').where({
                 _openId: res.result.openId
             }).get().then(res => {
-                console.log(res);
                 // 修改data中的头像 同步到视图
                 var fileID = "personalData[0].fileID";
                 this.setData({
@@ -168,35 +162,5 @@ Page({
         }).catch(err => {
             console.log(err);
         })
-    },
-    // 通用方法 修改
-    commonEditText: function (dataName, dataVal, ) {
-        // 登录获取openid 查询云数据库
-        wx.cloud.callFunction({
-            name: 'login'
-        }).then(res => {
-            db.collection('personalData').where({
-                _openId: res.result.openId
-            }).get().then(res => {
-                // 如果有数据 进第二次判断查询有没有用户名字段 否则添加用户名字段
-                if (res.data.length >= 1) {
-                    var id = res.data[0]._id;
-                    // 如果已有用户名字段 则进行修改 否则添加
-                    db.collection('personalData').doc(id).update({
-                        data: {
-                            [dataName]: dataVal
-                        }
-                    });
-                    console.log('修改成功')
-                    return;
-                } else {
-                    db.collection('personalData').add({
-                        data: {
-                            [dataName]: dataVal
-                        }
-                    })
-                }
-            });
-        });
     },
 })
