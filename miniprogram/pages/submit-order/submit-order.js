@@ -51,5 +51,12 @@ Page({
             url: '../personage-center/address-list/address-list?chooseIs=' + status,
         })
     },
+    onBuyTap: function () {
+        wx.showToast({
+            title: '敬请期待',
+            icon: 'none',
+            duration: 2000
+        });
+    }
     
 })

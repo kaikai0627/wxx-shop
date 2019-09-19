@@ -1,6 +1,6 @@
 <view class="cu-list menu">
     <view class="head-portrait">
-        <image src="{{personalData[0].fileID}}" catchtap='upLoad'></image>
+        <image src="{{personalData[0].fileID}}"></image>
     </view>
     <view class="cu-item arrow cu-form-group margin-top" bindtap="showModal" data-target="DialogModal">
         <view class="title">姓名</view>

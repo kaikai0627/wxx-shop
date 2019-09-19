@@ -92,11 +92,11 @@ Page({
         // val=1时价格从低到高 =2时价格从高到低 =0时默认排序 
         if (val == 1) {
             shopList.sort((a, b) => {
-                return b.shopPrice < a.shopPrice
+                return a.shopPrice - b.shopPrice
             });
         } else if (val == 2) {
             shopList.sort((a, b) => {
-                return b.shopPrice > a.shopPrice
+                return b.shopPrice - a.shopPrice
             });
         } else {
             this.getDataShopList();
@@ -116,7 +116,7 @@ Page({
         // salesIs=true时销量从高到低排序 =false时相反
         if (salesIs) {
             shopList.sort((a, b) => {
-                return b.salesVolume > a.salesVolume
+                return b.salesVolume - a.salesVolume
             });
             this.setData({
                 salesIs: false,
@@ -124,7 +124,7 @@ Page({
             })
         } else {
             shopList.sort((a, b) => {
-                return b.salesVolume < a.salesVolume
+                return a.salesVolume - b.salesVolume
             });
             this.setData({
                 salesIs: true,

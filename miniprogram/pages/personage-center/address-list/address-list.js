@@ -20,12 +20,12 @@ Page({
                 chooseIs: options.chooseIs
             }) 
         }
+    },
+    onShow: function () {
         // 显示loading
         this.setData({
             loadModal: true
         });
-    },
-    onShow: function () {
         this.getAddressData();
     },
     // 获取收货地址
